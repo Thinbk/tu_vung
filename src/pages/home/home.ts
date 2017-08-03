@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, Platform } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public platform: Platform, public mDataProvider: DataProvider, public navCtrl: NavController) {
+    this.platform.ready().then(
+      () => {
+        this.onPlatformReady();
+      }
+    );
+  }
+
+  onPlatformReady() {
+    this.mDataProvider.loadData();
 
   }
 
+  onClickSaveData(){
+    this.mDataProvider.saveData();
+  }
 }

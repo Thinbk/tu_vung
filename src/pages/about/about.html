@@ -1,11 +1,20 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            About
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Note</ion-label>
+            <ion-input type="text" [(ngModel)]="mInput"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <div padding text-center> <button ion-button round clear (tap)="onClickAddNote()"> Add</button> </div>
 
 </ion-content>

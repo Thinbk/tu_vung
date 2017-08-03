@@ -1,17 +1,23 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Notes</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-list>
+        <ion-list-header>List Notes</ion-list-header>
+        <ion-item *ngFor="let note of mDataProvider.mNotes">
+            <ion-row>
+                <ion-col col-2>{{note.id}} </ion-col>
+                <ion-col> {{note.content}}</ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
 </ion-content>
+<ion-item-sliding (ionSwipe)="delete(item)">
+  <ion-item>Item</ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="delete(item)">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
